@@ -1,0 +1,50 @@
+/* =========================
+   Catalogo - Cards
+   ========================= */
+
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+.card .card-body {
+  flex: 1 1 auto;
+}
+
+.product-img {
+  max-height: 180px;
+  width: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  padding: 10px;
+  display: block;
+}
+
+/* Imágenes del catálogo y carrito */
+.product-img {
+  max-height: 180px;
+  object-fit: contain;
+  margin: 0 auto;
+  padding: 10px;
+  display: block;
+}
+
+/* Control de cantidad */
+.cantidad-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.cantidad-control .btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

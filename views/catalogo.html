@@ -1,11 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cajero Web - Catálogo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-    
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="catalogo.html">Cajero Web</a>
+      <div>
+        <a href="catalogo.html" class="btn btn-outline-light me-2">Productos</a>
+        <a href="carrito.html" class="btn btn-light me-2">Carrito</a>
+        <button class="btn btn-danger" onclick="cerrarSesion()">Cerrar sesión</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO -->
+  <div class="container my-5">
+    <h2 class="mb-4 text-center">Catálogo de Productos Tecnológicos</h2>
+    <div class="row" id="listaProductos">
+
+      <!-- Laptop Acer -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center shadow-sm d-flex flex-column justify-content-between">
+          <img src="../assets/img/laptop-acer.jpg" class="card-img-top product-img" alt="Laptop Acer Aspire">
+          <div class="card-body">
+            <h5 class="card-title">Laptop Acer Aspire</h5>
+            <p class="card-text text-muted">Ligera y rápida, ideal para estudiantes.</p>
+            <p><small class="text-muted">Intel i5 - 8GB RAM - 512GB SSD</small></p>
+            <h6 class="fw-bold">$1200</h6>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <button class="btn btn-outline-primary w-100" onclick="agregarAlCarrito(1)">
+              <i class="bi bi-cart-plus"></i> Añadir al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MacBook Pro -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center shadow-sm d-flex flex-column justify-content-between">
+          <img src="../assets/img/macbook-pro.jpg" class="card-img-top product-img" alt="MacBook Pro 14">
+          <div class="card-body">
+            <h5 class="card-title">MacBook Pro 14</h5>
+            <p class="card-text text-muted">Potente y profesional para diseño y desarrollo.</p>
+            <p><small class="text-muted">M2 Pro - 16GB RAM - 1TB SSD</small></p>
+            <h6 class="fw-bold">$2500</h6>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <button class="btn btn-outline-primary w-100" onclick="agregarAlCarrito(2)">
+              <i class="bi bi-cart-plus"></i> Añadir al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- iPhone 14 -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center shadow-sm d-flex flex-column justify-content-between">
+          <img src="../assets/img/iphone14.jpg" class="card-img-top product-img" alt="iPhone 14">
+          <div class="card-body">
+            <h5 class="card-title">iPhone 14</h5>
+            <p class="card-text text-muted">Última generación Apple con cámara avanzada.</p>
+            <p><small class="text-muted">iOS - Pantalla 6.1" - Cámara 12MP</small></p>
+            <h6 class="fw-bold">$999</h6>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <button class="btn btn-outline-primary w-100" onclick="agregarAlCarrito(3)">
+              <i class="bi bi-cart-plus"></i> Añadir al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Samsung S23 -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center shadow-sm d-flex flex-column justify-content-between">
+          <img src="../assets/img/samsung-s23.jpg" class="card-img-top product-img" alt="Samsung Galaxy S23">
+          <div class="card-body">
+            <h5 class="card-title">Samsung Galaxy S23</h5>
+            <p class="card-text text-muted">Rendimiento de alto nivel con cámara profesional.</p>
+            <p><small class="text-muted">Android 13 - Pantalla 6.8" - Cámara 108MP</small></p>
+            <h6 class="fw-bold">$1100</h6>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <button class="btn btn-outline-primary w-100" onclick="agregarAlCarrito(4)">
+              <i class="bi bi-cart-plus"></i> Añadir al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Teclado Mecánico -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center shadow-sm d-flex flex-column justify-content-between">
+          <img src="../assets/img/keyboard-mechanical.jpg" class="card-img-top product-img" alt="Teclado Mecánico RGB">
+          <div class="card-body">
+            <h5 class="card-title">Teclado Mecánico RGB</h5>
+            <p class="card-text text-muted">Resistente, ergonómico y retroiluminado.</p>
+            <p><small class="text-muted">Switches azules - Cable USB</small></p>
+            <h6 class="fw-bold">$80</h6>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <button class="btn btn-outline-primary w-100" onclick="agregarAlCarrito(5)">
+              <i class="bi bi-cart-plus"></i> Añadir al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audífonos -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center shadow-sm d-flex flex-column justify-content-between">
+          <img src="../assets/img/headphones-black.jpg" class="card-img-top product-img" alt="Audífonos Black Pro">
+          <div class="card-body">
+            <h5 class="card-title">Audífonos Black Pro</h5>
+            <p class="card-text text-muted">Calidad de sonido superior y diseño elegante.</p>
+            <p><small class="text-muted">Bluetooth - Micrófono integrado</small></p>
+            <h6 class="fw-bold">$150</h6>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <button class="btn btn-outline-primary w-100" onclick="agregarAlCarrito(6)">
+              <i class="bi bi-cart-plus"></i> Añadir al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mouse Inalámbrico -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center shadow-sm d-flex flex-column justify-content-between">
+          <img src="../assets/img/mouse-wireless.jpg" class="card-img-top product-img" alt="Mouse Inalámbrico Pro">
+          <div class="card-body">
+            <h5 class="card-title">Mouse Inalámbrico Pro</h5>
+            <p class="card-text text-muted">Ergonómico, rápido y recargable.</p>
+            <p><small class="text-muted">Sensor 4000 DPI - USB-C</small></p>
+            <h6 class="fw-bold">$100</h6>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <button class="btn btn-outline-primary w-100" onclick="agregarAlCarrito(7)">
+              <i class="bi bi-cart-plus"></i> Añadir al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monitor 27 -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center shadow-sm d-flex flex-column justify-content-between">
+          <img src="../assets/img/monitor-27.jpg" class="card-img-top product-img" alt="Monitor 27 pulgadas">
+          <div class="card-body">
+            <h5 class="card-title">Monitor 27"</h5>
+            <p class="card-text text-muted">Resolución 4K UHD con gran calidad de color.</p>
+            <p><small class="text-muted">Panel IPS - 144Hz</small></p>
+            <h6 class="fw-bold">$400</h6>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <button class="btn btn-outline-primary w-100" onclick="agregarAlCarrito(8)">
+              <i class="bi bi-cart-plus"></i> Añadir al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Smartwatch -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center shadow-sm d-flex flex-column justify-content-between">
+          <img src="../assets/img/smartwatch.jpg" class="card-img-top product-img" alt="Smartwatch Pro">
+          <div class="card-body">
+            <h5 class="card-title">Smartwatch Pro</h5>
+            <p class="card-text text-muted">Controla tu salud y recibe notificaciones.</p>
+            <p><small class="text-muted">Pantalla AMOLED - GPS - Resistente al agua</small></p>
+            <h6 class="fw-bold">$220</h6>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <button class="btn btn-outline-primary w-100" onclick="agregarAlCarrito(9)">
+              <i class="bi bi-cart-plus"></i> Añadir al Carrito
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../controllers/app/app.js"></script>
+  <script>
+    protegerPagina();
+  </script>
 </body>
 </html>
