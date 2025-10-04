@@ -388,5 +388,70 @@ function mostrarCarrito() {
   document.getElementById("totalCarrito").innerText = `Total: $${total.toFixed(2)}`;
 }
 
+// =========================
+//   CONFIRMAR COMPRA
+// =========================
+function confirmarCompra() {
+  if (!carrito || carrito.length === 0) {
+    Swal.fire({ icon: "warning", title: "Carrito vacío", text: "Agrega productos antes de confirmar." });
+    return;
+  }
+
+  const factura = {
+    numero: Date.now(),
+    cliente: clienteActual,
+    productos: carrito,
+    total: carrito.reduce((sum, p) => sum + p.precio * p.cantidad, 0),
+    fecha: new Date().toLocaleString()
+  };
+
+  localStorage.setItem("facturaActual", JSON.stringify(factura));
+  carrito = [];
+  guardarCarrito();
+
+  Swal.fire({
+    icon: "success",
+    title: "Compra confirmada",
+    text: "Tu factura ha sido generada"
+  }).then(() => {
+    window.location.href = "factura.html";
+  });
+}
+
+// =========================
+//   EDITAR PERFIL
+// =========================
+document.getElementById("formEditarPerfil")?.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if (!clienteActual) return;
+
+  const nuevosDatos = {
+    nombre: document.getElementById("editNombre").value.trim(),
+    correo: document.getElementById("editCorreo").value.trim(),
+    direccion: document.getElementById("editDireccion").value.trim(),
+    contrasena: document.getElementById("editPassword").value.trim()
+  };
+
+  modificarDatosCliente(nuevosDatos);
+
+  Swal.fire({
+    icon: "success",
+    title: "Perfil actualizado",
+    text: "Tus datos se han modificado correctamente"
+  });
+
+  const modal = bootstrap.Modal.getInstance(document.getElementById("modalPerfil"));
+  modal.hide();
+});
+
+document.getElementById("modalPerfil")?.addEventListener("show.bs.modal", () => {
+  if (!clienteActual) return;
+  document.getElementById("editNombre").value = clienteActual.nombre;
+  document.getElementById("editCorreo").value = clienteActual.correo;
+  document.getElementById("editDireccion").value = clienteActual.direccionEnvio;
+  document.getElementById("editPassword").value = clienteActual.contrasena;
+});
+
 
 
